@@ -1,6 +1,6 @@
-from encryption import pad, unpad, Encrypt
-
 import datetime
+
+from _utils import pad, unpad, encrypt, decrypt
 
 
 def test_pad_unpad():
@@ -17,5 +17,5 @@ def test_encrypt_decrypt():
             (2, 3, 5): datetime.datetime.now()
         }
     ]
-    encryptor = Encrypt('strong password')
-    assert raw_data == encryptor.decrypt(encryptor.encrypt(raw_data))
+    key = 'strong password'
+    assert raw_data == decrypt(encrypt(raw_data, key), key)

@@ -7,6 +7,10 @@ from Crypto.Protocol.KDF import PBKDF2
 import settings
 
 
+class DecryptionError(Exception):
+    pass
+
+
 def pad(string):
     n = len(string)
     multiplicity = settings.block_size - n % settings.block_size
@@ -36,8 +40,11 @@ def decrypt(input_data, key):
     iv = input_data[settings.block_size:2*settings.block_size]
     encrypted_data = input_data[2*settings.block_size:]
     key = PBKDF2(key, salt, settings.key_size)
-    cipher = AES.new(key, settings.mode, iv)
-    padded_data = cipher.decrypt(encrypted_data)
-    pickled_data = unpad(padded_data)
-    raw_data = pickle.loads(pickled_data)
+    try:
+        cipher = AES.new(key, settings.mode, iv)
+        padded_data = cipher.decrypt(encrypted_data)
+        pickled_data = unpad(padded_data)
+        raw_data = pickle.loads(pickled_data)
+    except (EOFError, IndexError, ValueError):
+        raise DecryptionError('Could not decrypt the data.')
     return raw_data

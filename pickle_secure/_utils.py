@@ -1,10 +1,9 @@
 import pickle
-
 from Crypto import Random
 from Crypto.Cipher import AES
 from Crypto.Protocol.KDF import PBKDF2
 
-import settings
+from . import _settings
 
 
 class DecryptionError(Exception):
@@ -13,7 +12,7 @@ class DecryptionError(Exception):
 
 def pad(string):
     n = len(string)
-    multiplicity = settings.block_size - n % settings.block_size
+    multiplicity = _settings.block_size - n % _settings.block_size
     padding_char = chr(multiplicity).encode()
     return string + multiplicity * padding_char
 
@@ -24,10 +23,10 @@ def unpad(string):
 
 
 def encrypt(raw_data, key, protocol=None, fix_imports=True):
-    salt = Random.new().read(settings.block_size)
-    key = PBKDF2(key, salt, settings.key_size)
-    iv = Random.new().read(settings.block_size)
-    cipher = AES.new(key, settings.mode, iv)
+    salt = Random.new().read(_settings.block_size)
+    key = PBKDF2(key, salt, _settings.key_size)
+    iv = Random.new().read(_settings.block_size)
+    cipher = AES.new(key, _settings.mode, iv)
     pickled_data = pickle.dumps(
         raw_data, protocol=protocol, fix_imports=fix_imports
     )
@@ -39,12 +38,12 @@ def encrypt(raw_data, key, protocol=None, fix_imports=True):
 
 def decrypt(input_data, key, fix_imports=True,
             encoding='ASCII', errors='strict'):
-    salt = input_data[:settings.block_size]
-    iv = input_data[settings.block_size:2*settings.block_size]
-    encrypted_data = input_data[2*settings.block_size:]
-    key = PBKDF2(key, salt, settings.key_size)
+    salt = input_data[:_settings.block_size]
+    iv = input_data[_settings.block_size:2*_settings.block_size]
+    encrypted_data = input_data[2*_settings.block_size:]
+    key = PBKDF2(key, salt, _settings.key_size)
     try:
-        cipher = AES.new(key, settings.mode, iv)
+        cipher = AES.new(key, _settings.mode, iv)
         padded_data = cipher.decrypt(encrypted_data)
         pickled_data = unpad(padded_data)
         raw_data = pickle.loads(

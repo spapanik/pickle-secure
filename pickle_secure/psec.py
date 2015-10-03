@@ -1,4 +1,4 @@
-import _utils
+from . import _utils
 
 
 def dumps(obj, key, protocol=None, fix_imports=True):

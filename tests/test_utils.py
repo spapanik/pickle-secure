@@ -1,8 +1,7 @@
 import datetime
 from pytest import raises, fixture
 
-import settings
-from _utils import pad, unpad, encrypt, decrypt, DecryptionError
+from pickle_secure._utils import pad, unpad, encrypt, decrypt, DecryptionError
 
 
 @fixture(scope='module')
@@ -72,3 +71,26 @@ def test_too_short_for_decrypting():
         data()['encrypted_data'][:33],
         data()['key']
     )
+
+
+class TestClass:
+    @classmethod
+    def setup_class(cls):
+        """ setup any state specific to the execution of the given class (which
+        usually contains tests).
+        """
+        print('in')
+        global u
+        u = 1
+
+    @classmethod
+    def teardown_class(cls):
+        """ teardown any state that was previously setup with a call to
+        setup_class.
+        """
+        print('out')
+        global u
+        u = 2
+
+    def test_u(self):
+        pass

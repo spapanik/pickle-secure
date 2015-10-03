@@ -3,16 +3,16 @@ from Crypto import Random
 from Crypto.Cipher import AES
 from Crypto.Protocol.KDF import PBKDF2
 
-from . import _settings
+from pickle_secure import _settings
 
 
 class DecryptionError(Exception):
     pass
 
 
-def pad(string):
+def pad(string, length):
     n = len(string)
-    multiplicity = _settings.block_size - n % _settings.block_size
+    multiplicity = _settings.block_size - n % length
     padding_char = chr(multiplicity).encode()
     return string + multiplicity * padding_char
 
@@ -30,7 +30,7 @@ def encrypt(raw_data, key, protocol=None, fix_imports=True):
     pickled_data = pickle.dumps(
         raw_data, protocol=protocol, fix_imports=fix_imports
     )
-    padded_data = pad(pickled_data)
+    padded_data = pad(pickled_data, _settings.block_size)
     encrypted_data = cipher.encrypt(padded_data)
     output_data = salt + iv + encrypted_data
     return output_data

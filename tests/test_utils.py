@@ -1,7 +1,6 @@
 import datetime
 from pytest import raises, fixture
 
-from pickle_secure import _settings
 from pickle_secure._utils import pad, unpad, encrypt, decrypt, DecryptionError
 
 
@@ -19,11 +18,12 @@ def data():
 
 
 def test_pad_unpad():
-    for length in range(17):
+    quantum_length = 16
+    for length in range(quantum_length+1):
         string = b'x' * length
-        padded_string = pad(string)
-        assert len(padded_string) % _settings.block_size == 0
-        assert string == unpad(pad(string))
+        padded_string = pad(string, quantum_length)
+        assert len(padded_string) % quantum_length == 0
+        assert string == unpad(pad(string, quantum_length))
 
 
 def test_encrypt_decrypt():
@@ -72,26 +72,3 @@ def test_too_short_for_decrypting():
         data()['encrypted_data'][:33],
         data()['key']
     )
-
-
-class TestClass:
-    @classmethod
-    def setup_class(cls):
-        """ setup any state specific to the execution of the given class (which
-        usually contains tests).
-        """
-        print('in')
-        global u
-        u = 1
-
-    @classmethod
-    def teardown_class(cls):
-        """ teardown any state that was previously setup with a call to
-        setup_class.
-        """
-        print('out')
-        global u
-        u = 2
-
-    def test_u(self):
-        pass

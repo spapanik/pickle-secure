@@ -1,4 +1,4 @@
-from . import _utils
+from pickle_secure import _utils
 
 
 def dumps(obj, key, protocol=None, fix_imports=True):

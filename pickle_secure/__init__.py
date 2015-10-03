@@ -1,1 +1,1 @@
-from .psec import dump, dumps, load, loads
+from pickle_secure.psec import dump, dumps, load, loads

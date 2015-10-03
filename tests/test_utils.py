@@ -1,6 +1,7 @@
 import datetime
 from pytest import raises, fixture
 
+from pickle_secure import _settings
 from pickle_secure._utils import pad, unpad, encrypt, decrypt, DecryptionError
 
 
@@ -21,7 +22,7 @@ def test_pad_unpad():
     for length in range(17):
         string = b'x' * length
         padded_string = pad(string)
-        assert len(padded_string) % settings.block_size == 0
+        assert len(padded_string) % _settings.block_size == 0
         assert string == unpad(pad(string))
 
 

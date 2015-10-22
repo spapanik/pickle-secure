@@ -1,4 +1,1 @@
-py==1.4.30
 pycrypto==2.6.1
-pytest==2.8.0
-wheel==0.26.0

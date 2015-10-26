@@ -1,1 +1,13 @@
-from pickle_secure.psec import dump, dumps, load, loads
+from pickle_secure._psec import (
+    HIGHEST_PROTOCOL,
+    DEFAULT_PROTOCOL,
+    PickleError,
+    PicklingError,
+    UnpicklingError,
+    dumps,
+    dump,
+    loads,
+    load,
+    Pickler,
+    Unpickler,
+)

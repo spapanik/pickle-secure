@@ -1,23 +1,28 @@
-import os
 from setuptools import setup
 
 
 def listify(filename):
-    lines = open(filename, 'r').read().split(os.linesep)
-    return filter(lambda x: x, lines)
+    with open(filename) as f:
+        return [line.strip() for line in f.readlines()]
+
+
+def contents(filename):
+    with open(filename) as f:
+        return f.read()
 
 setup(
     name='pickle_secure',
-    version='0.0.0.alpha',
-    url='https://github.com/spapanik/pickle-secure',
-    license='GPLv2',
+    packages=['pickle_secure'],
+    version='0.0.1a0',
     description='Easily create encrypted pickle files',
-    long_description=open('README.rst', 'r').read(),
+    license='GPLv2',
+    long_description=contents('README.txt'),
     author='Stephanos Papanikolopoulos',
     author_email='spapanik21@gmail.com',
-    packages=['pickle_secure'],
-    keywords=['pickle', 'AES', 'secure storage'],
+    url='https://github.com/spapanik/pickle-secure',
+    download_url='https://github.com/spapanik/pickle-secure/tarball/0.0.1a0',
+    keywords=listify('KEYWORDS.txt'),
     install_requires=listify('requirements.txt'),
-    tests_require=listify('requirements_dev.txt'),
-    classifiers=listify('CLASSIFIERS.txt')
+    tests_require=listify('requirements_test.txt'),
+    classifiers=listify('CLASSIFIERS.txt'),
 )

@@ -18,6 +18,6 @@ setup(
     packages=['pickle_secure'],
     keywords=['pickle', 'AES', 'secure storage'],
     install_requires=listify('requirements.txt'),
-    tests_require=listify('requirements.test.txt'),
+    tests_require=listify('requirements_dev.txt'),
     classifiers=listify('CLASSIFIERS.txt')
 )

@@ -3,7 +3,9 @@ from Crypto import Random
 from Crypto.Cipher import AES
 from Crypto.Protocol.KDF import PBKDF2
 
-from pickle_secure import _settings
+block_size = AES.block_size
+key_size = AES.key_size[2]
+mode = AES.MODE_CBC
 
 
 class DecryptionError(Exception):
@@ -12,7 +14,7 @@ class DecryptionError(Exception):
 
 def pad(string, length):
     n = len(string)
-    multiplicity = _settings.block_size - n % length
+    multiplicity = block_size - n % length
     padding_char = chr(multiplicity).encode()
     return string + multiplicity * padding_char
 
@@ -23,14 +25,14 @@ def unpad(string):
 
 
 def encrypt(raw_data, key, protocol=None, fix_imports=True):
-    salt = Random.new().read(_settings.block_size)
-    key = PBKDF2(key, salt, _settings.key_size)
-    iv = Random.new().read(_settings.block_size)
-    cipher = AES.new(key, _settings.mode, iv)
+    salt = Random.new().read(block_size)
+    key = PBKDF2(key, salt, key_size)
+    iv = Random.new().read(block_size)
+    cipher = AES.new(key, mode, iv)
     pickled_data = pickle.dumps(
         raw_data, protocol=protocol, fix_imports=fix_imports
     )
-    padded_data = pad(pickled_data, _settings.block_size)
+    padded_data = pad(pickled_data, block_size)
     encrypted_data = cipher.encrypt(padded_data)
     output_data = salt + iv + encrypted_data
     return output_data
@@ -38,12 +40,12 @@ def encrypt(raw_data, key, protocol=None, fix_imports=True):
 
 def decrypt(input_data, key, fix_imports=True,
             encoding='ASCII', errors='strict'):
-    salt = input_data[:_settings.block_size]
-    iv = input_data[_settings.block_size:2*_settings.block_size]
-    encrypted_data = input_data[2*_settings.block_size:]
-    key = PBKDF2(key, salt, _settings.key_size)
+    salt = input_data[:block_size]
+    iv = input_data[block_size:2*block_size]
+    encrypted_data = input_data[2*block_size:]
+    key = PBKDF2(key, salt, key_size)
     try:
-        cipher = AES.new(key, _settings.mode, iv)
+        cipher = AES.new(key, mode, iv)
         padded_data = cipher.decrypt(encrypted_data)
         pickled_data = unpad(padded_data)
         raw_data = pickle.loads(

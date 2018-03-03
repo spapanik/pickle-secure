@@ -1,7 +1,7 @@
 from setuptools import setup
 
 PKG_NAME = 'pickle_secure'
-__version__ = '0.0.1a1'
+__version__ = '0.1.0'
 
 
 def listify(filename):

@@ -1,7 +1,13 @@
 from setuptools import setup
 
-PKG_NAME = 'pickle_secure'
 __version__ = '0.1.0'
+__author__ = 'spapanik'
+
+PKG_NAME = 'pickle_secure'
+PKG_URL = 'https://github.com/{author}/{pkg_slug}'.format(
+    author=__author__,
+    pkg_slug=PKG_NAME.replace('_', '-'),
+)
 
 
 def listify(filename):
@@ -20,11 +26,11 @@ setup(
     description='Easily create encrypted pickle files',
     license='GPLv2',
     long_description=contents('README.txt'),
-    author='Stephanos Papanikolopoulos',
+    author=__author__,
     author_email='spapanik21@gmail.com',
-    url='https://github.com/spapanik/{pkg_name}'.format(pkg_name=PKG_NAME),
-    download_url='https://github.com/spapanik/{pkg_name}/tarball/{ver}'.format(
-        pkg_name=PKG_NAME,
+    url=PKG_URL,
+    download_url='{pkg_url}/tarball/{ver}'.format(
+        pkg_url=PKG_URL,
         ver=__version__,
     ),
     keywords=listify('KEYWORDS.txt'),

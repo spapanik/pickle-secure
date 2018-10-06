@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 __author__ = "spapanik"
-__version__ = "0.1.3"
+__version__ = '0.2.0'
 __license__ = "MIT"
 
 PKG_NAME = "pickle_secure"

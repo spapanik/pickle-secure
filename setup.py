@@ -19,7 +19,7 @@ setup(
     version=__version__,
     license=__license__,
     description="Easily create encrypted pickle files",
-    long_description=contents("README.txt"),
+    long_description=contents("readme.md"),
     author=__author__,
     author_email="spapanik21@gmail.com",
     url=PKG_URL,

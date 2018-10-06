@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 __author__ = "spapanik"
-__version__ = '0.1.3'
+__version__ = "0.1.3"
 __license__ = "MIT"
 
 PKG_NAME = "pickle_secure"
@@ -27,7 +27,7 @@ setup(
     url=PKG_URL,
     download_url=f"{PKG_URL}/tarball/{__version__}",
     python_requires=">=3.6",
-    install_requires=["pycrypto>=2.6.0,<2.7.0"],
+    install_requires=["cryptography>=2.3.0,<2.4.0"],
     tests_require=["pytest>=3.0.0,<4.0.0"],
     keywords=["pickle", "AES", "secure storage"],
     classifiers=[

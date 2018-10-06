@@ -3,6 +3,7 @@ from setuptools import find_packages, setup
 __author__ = "spapanik"
 __version__ = "0.1.1"
 __license__ = "GPLv2"
+
 PKG_NAME = "pickle_secure"
 PKG_SLUG = PKG_NAME.replace("_", "-")
 PKG_URL = f"https://github.com/{__author__}/{PKG_SLUG}"
@@ -15,13 +16,14 @@ def contents(filename):
 
 setup(
     name=PKG_NAME,
-    packages=[PKG_NAME],
+    packages=find_packages("src"),
+    package_dir={"": "src"},
     version=__version__,
+    author=__author__,
+    author_email="spapanik21@gmail.com",
     license=__license__,
     description="Easily create encrypted pickle files",
     long_description=contents("readme.md"),
-    author=__author__,
-    author_email="spapanik21@gmail.com",
     url=PKG_URL,
     download_url=f"{PKG_URL}/tarball/{__version__}",
     python_requires=">=3.6",

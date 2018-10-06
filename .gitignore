@@ -1,12 +1,10 @@
-# python bytecode
+# python
 __pycache__/
 requirements.txt
 
-
-# distribution/packaging
-build/
+# dist outpout
 dist/
+build/
 
-
-# unit-testing
+# tests
 .pytest_cache/

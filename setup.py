@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 __author__ = "spapanik"
 __version__ = '0.1.2'
-__license__ = "GPLv2"
+__license__ = "MIT"
 
 PKG_NAME = "pickle_secure"
 PKG_SLUG = PKG_NAME.replace("_", "-")
@@ -32,7 +32,7 @@ setup(
     keywords=["pickle", "AES", "secure storage"],
     classifiers=[
         "Development Status :: 3 - Alpha",
-        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python :: 3 :: Only",
     ],

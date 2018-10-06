@@ -38,20 +38,23 @@ def encrypt(raw_data, key, protocol=None, fix_imports=True):
     return output_data
 
 
-def decrypt(input_data, key, fix_imports=True,
-            encoding='ASCII', errors='strict'):
+def decrypt(
+    input_data, key, fix_imports=True, encoding="ASCII", errors="strict"
+):
     salt = input_data[:block_size]
-    iv = input_data[block_size:2*block_size]
-    encrypted_data = input_data[2*block_size:]
+    iv = input_data[block_size : 2 * block_size]
+    encrypted_data = input_data[2 * block_size :]
     key = PBKDF2(key, salt, key_size)
     try:
         cipher = AES.new(key, mode, iv)
         padded_data = cipher.decrypt(encrypted_data)
         pickled_data = unpad(padded_data)
         raw_data = pickle.loads(
-            pickled_data, fix_imports=fix_imports,
-            encoding=encoding, errors=errors
+            pickled_data,
+            fix_imports=fix_imports,
+            encoding=encoding,
+            errors=errors,
         )
     except (EOFError, IndexError, ValueError):
-        raise DecryptionError('Could not decrypt the data.')
+        raise DecryptionError("Could not decrypt the data.")
     return raw_data

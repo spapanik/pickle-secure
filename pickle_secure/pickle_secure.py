@@ -13,17 +13,27 @@ def dumps(obj, key, protocol=None, *, fix_imports=True):
 
 
 def dump(obj, file, key, protocol=None, *, fix_imports=True):
-    encrypted_data = dumps(obj, key=key, protocol=protocol, fix_imports=fix_imports)
+    encrypted_data = dumps(
+        obj, key=key, protocol=protocol, fix_imports=fix_imports
+    )
     file.write(encrypted_data)
 
 
-def loads(bytes_object, key, *,  fix_imports=True, encoding='ASCII', errors='strict'):
+def loads(
+    bytes_object, key, *, fix_imports=True, encoding="ASCII", errors="strict"
+):
     return _utils.decrypt(bytes_object, key, fix_imports, encoding, errors)
 
 
-def load(file, key, *, fix_imports=True, encoding='ASCII', errors='strict'):
+def load(file, key, *, fix_imports=True, encoding="ASCII", errors="strict"):
     encrypted_data = file.read()
-    return loads(encrypted_data, key, fix_imports=fix_imports, encoding=encoding, errors=errors)
+    return loads(
+        encrypted_data,
+        key,
+        fix_imports=fix_imports,
+        encoding=encoding,
+        errors=errors,
+    )
 
 
 class Pickler(pickle.Pickler):

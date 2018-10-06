@@ -33,8 +33,13 @@ setup(
         pkg_url=PKG_URL,
         ver=__version__,
     ),
-    keywords=listify('KEYWORDS.txt'),
-    install_requires=listify('requirements.txt'),
-    tests_require=listify('requirements_test.txt'),
-    classifiers=listify('CLASSIFIERS.txt'),
+    keywords=["pickle", "AES", "secure storage"],
+    install_requires=["pycrypto>=2.6.0,<2.7.0"],
+    tests_require=["pytest>=3.0.0,<4.0.0"],
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3 :: Only",
+    ],
 )

@@ -1,6 +1,5 @@
-.PHONY: black tests
-
-black:
+.PHONY: format
+format:
 	black .
 
 pyproject.lock: pyproject.toml
@@ -11,5 +10,6 @@ requirements.txt: pyproject.lock
 	poetry install ${DEV}
 	poetry show | awk '{print $$1"=="$$2}' > $@
 
+.PHONY: tests
 tests:
 	py.test

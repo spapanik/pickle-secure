@@ -1,6 +1,6 @@
 [tool.black]
 line-length = 79
-py36 = true
+target-version = ["py36", "py37", "py38"]
 
 [tool.poetry]
 name = "pickle_secure"
@@ -15,5 +15,7 @@ python = "^3.6"
 cryptography = "~2.3"
 
 [tool.poetry.dev-dependencies]
-black = "^18.0"
-pytest = "^3.0"
+black = {version = "*", allows-prereleases = true}
+pytest = "^4.4"
+ipython = "^7.2"
+ipdb = "^0.12"

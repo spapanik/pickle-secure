@@ -1,6 +1,6 @@
 import base64
-import pickle
 import os
+import pickle
 
 from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
@@ -26,17 +26,13 @@ def encrypt(raw_data, password, protocol=None, fix_imports=True):
     salt = os.urandom(SALT_SIZE)
     key = derive_key(password, salt)
     fernet = Fernet(key)
-    pickled_data = pickle.dumps(
-        raw_data, protocol=protocol, fix_imports=fix_imports
-    )
+    pickled_data = pickle.dumps(raw_data, protocol=protocol, fix_imports=fix_imports)
     encrypted_data = fernet.encrypt(pickled_data)
     output_data = salt + encrypted_data
     return output_data
 
 
-def decrypt(
-    input_data, password, fix_imports=True, encoding="ASCII", errors="strict"
-):
+def decrypt(input_data, password, fix_imports=True, encoding="ASCII", errors="strict"):
     salt = input_data[:SALT_SIZE]
     encrypted_data = input_data[SALT_SIZE:]
     key = derive_key(password, salt)

@@ -1,4 +1,5 @@
 import pickle
+
 from pickle_secure import utils
 
 HIGHEST_PROTOCOL = pickle.HIGHEST_PROTOCOL
@@ -13,26 +14,18 @@ def dumps(obj, key, protocol=None, *, fix_imports=True):
 
 
 def dump(obj, file, key, protocol=None, *, fix_imports=True):
-    encrypted_data = dumps(
-        obj, key=key, protocol=protocol, fix_imports=fix_imports
-    )
+    encrypted_data = dumps(obj, key=key, protocol=protocol, fix_imports=fix_imports)
     file.write(encrypted_data)
 
 
-def loads(
-    bytes_object, key, *, fix_imports=True, encoding="ASCII", errors="strict"
-):
+def loads(bytes_object, key, *, fix_imports=True, encoding="ASCII", errors="strict"):
     return utils.decrypt(bytes_object, key, fix_imports, encoding, errors)
 
 
 def load(file, key, *, fix_imports=True, encoding="ASCII", errors="strict"):
     encrypted_data = file.read()
     return loads(
-        encrypted_data,
-        key,
-        fix_imports=fix_imports,
-        encoding=encoding,
-        errors=errors,
+        encrypted_data, key, fix_imports=fix_imports, encoding=encoding, errors=errors,
     )
 
 

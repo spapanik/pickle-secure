@@ -31,6 +31,4 @@ def test_too_short_for_decrypting():
     password = "strong password"
     encrypted_data = utils.encrypt(secret, password)
     short_size = utils.SALT_SIZE - 1
-    assert raises(
-        InvalidToken, utils.decrypt, encrypted_data[:short_size], password
-    )
+    assert raises(InvalidToken, utils.decrypt, encrypted_data[:short_size], password)

@@ -14,8 +14,9 @@ def dumps(obj, key, protocol=None, *, fix_imports=True):
 
 
 def dump(obj, file, key, protocol=None, *, fix_imports=True):
-    encrypted_data = dumps(obj, key=key, protocol=protocol, fix_imports=fix_imports)
-    file.write(encrypted_data)
+    file.write(
+        dumps(obj, key=key, protocol=protocol, fix_imports=fix_imports)
+    )
 
 
 def loads(bytes_object, key, *, fix_imports=True, encoding="ASCII", errors="strict"):
@@ -23,9 +24,8 @@ def loads(bytes_object, key, *, fix_imports=True, encoding="ASCII", errors="stri
 
 
 def load(file, key, *, fix_imports=True, encoding="ASCII", errors="strict"):
-    encrypted_data = file.read()
     return loads(
-        encrypted_data, key, fix_imports=fix_imports, encoding=encoding, errors=errors,
+        file.read(), key, fix_imports=fix_imports, encoding=encoding, errors=errors,
     )
 
 

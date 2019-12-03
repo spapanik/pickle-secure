@@ -14,9 +14,7 @@ def dumps(obj, key, protocol=None, *, fix_imports=True):
 
 
 def dump(obj, file, key, protocol=None, *, fix_imports=True):
-    file.write(
-        dumps(obj, key=key, protocol=protocol, fix_imports=fix_imports)
-    )
+    file.write(dumps(obj, key=key, protocol=protocol, fix_imports=fix_imports))
 
 
 def loads(bytes_object, key, *, fix_imports=True, encoding="ASCII", errors="strict"):

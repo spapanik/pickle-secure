@@ -28,8 +28,7 @@ def encrypt(raw_data, password, protocol=None, fix_imports=True):
     fernet = Fernet(key)
     pickled_data = pickle.dumps(raw_data, protocol=protocol, fix_imports=fix_imports)
     encrypted_data = fernet.encrypt(pickled_data)
-    output_data = salt + encrypted_data
-    return output_data
+    return salt + encrypted_data
 
 
 def decrypt(input_data, password, fix_imports=True, encoding="ASCII", errors="strict"):
@@ -38,7 +37,6 @@ def decrypt(input_data, password, fix_imports=True, encoding="ASCII", errors="st
     key = derive_key(password, salt)
     fernet = Fernet(key)
     pickled_data = fernet.decrypt(encrypted_data)
-    raw_data = pickle.loads(
+    return pickle.loads(
         pickled_data, fix_imports=fix_imports, encoding=encoding, errors=errors
     )
-    return raw_data

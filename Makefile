@@ -10,6 +10,12 @@ format:
 	isort -rc .
 	black .
 
+.PHONY: lint
+lint:
+	flake8 .
+	isort --check-only -rc .
+	black --check .
+
 .PHONY: tests
 tests:
 	py.test $(TEST_FLAGS) $(TEST_PATH)

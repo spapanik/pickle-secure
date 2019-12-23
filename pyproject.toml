@@ -16,7 +16,9 @@ sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER", "TEST
 name = "pickle_secure"
 version = "0.1.1"
 description = "Easily create encrypted pickle files"
-authors = ["spapanik <spapanik21@gmail.com>"]
+authors = [
+    "Stephanos Kuma <spapanik21@gmail.com>",
+]
 
 license = "MIT"
 readme = "README.md"

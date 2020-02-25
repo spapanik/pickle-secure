@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry>=0.12"]
+requires = ["poetry>=1.0.0"]
 build-backend = "poetry.masonry.api"
 
 [tool.black]
@@ -14,7 +14,7 @@ sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER", "TEST
 
 [tool.poetry]
 name = "pickle_secure"
-version = "0.1.1"
+version = "0.2.0"
 description = "Easily create encrypted pickle files"
 authors = [
     "Stephanos Kuma <spapanik21@gmail.com>",
@@ -35,26 +35,26 @@ classifiers=[
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.0"
 
-cryptography = "~2.3"
+cryptography = "^2.3.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "*", allow-prereleases = true}
-isort = "^4.3"
+isort = "^4.3.0"
 
-pytest = "^5.1"
-pytest-cov = "^2.8"
-coveralls = "^1.8"
+pytest = "^5.3.0"
+pytest-cov = "^2.8.0"
+coveralls = "^1.11.0"
 
-ipython = "^7.8"
-ipdb = "^0.12"
+ipython = "^7.12.0"
+ipdb = "^0.12.0"
 
-flake8 = "^3.7"
-flake8-bugbear = "^19.8"
-flake8-builtins = "^1.4"
-flake8-comprehensions = "^3.1"
-flake8-eradicate = "^0.2.3"
-flake8-executable = "^2.0"
-flake8-mutable = "^1.2"
-flake8-tidy-imports = "^3.1"
+flake8 = "^3.7.0"
+flake8-bugbear = "^20.1.0"
+flake8-builtins = "^1.4.0"
+flake8-comprehensions = "^3.2.0"
+flake8-eradicate = "^0.2.0"
+flake8-executable = "^2.0.0"
+flake8-mutable = "^1.2.0"
+flake8-tidy-imports = "^4.0.0"

@@ -2,6 +2,7 @@ import pickle
 
 from pickle_secure import utils
 
+API_VERSION = "3.6"
 HIGHEST_PROTOCOL = pickle.HIGHEST_PROTOCOL
 DEFAULT_PROTOCOL = pickle.DEFAULT_PROTOCOL
 PickleError = pickle.PickleError
@@ -28,8 +29,41 @@ def load(file, key, *, fix_imports=True, encoding="ASCII", errors="strict"):
 
 
 class Pickler(pickle.Pickler):
-    pass
+    def __init__(self, file, key, protocol=None, *, fix_imports=True):
+        super().__init__(file, protocol, fix_imports=fix_imports)
+        self.__file = file
+        self.__key = key
+        self.__protocol = protocol
+        self.__fix_imports = fix_imports
+
+    def dump(self, obj):
+        return dump(
+            obj,
+            self.__file,
+            self.__key,
+            self.__protocol,
+            fix_imports=self.__fix_imports,
+        )
 
 
 class Unpickler(pickle.Unpickler):
-    pass
+    def __init__(
+        self, file, key, *, fix_imports=True, encoding="ASCII", errors="strict"
+    ):
+        super().__init__(
+            file, fix_imports=fix_imports, encoding=encoding, errors=errors
+        )
+        self.__file = file
+        self.__key = key
+        self.__fix_imports = fix_imports
+        self.__encoding = encoding
+        self.__errors = errors
+
+    def load(self):
+        return load(
+            self.__file,
+            self.__key,
+            fix_imports=self.__fix_imports,
+            encoding=self.__encoding,
+            errors=self.__errors,
+        )

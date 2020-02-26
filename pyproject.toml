@@ -14,7 +14,7 @@ sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER", "TEST
 
 [tool.poetry]
 name = "pickle_secure"
-version = "0.2.0"
+version = "0.9.9"
 description = "Easily create encrypted pickle files"
 authors = [
     "Stephanos Kuma <spapanik21@gmail.com>",
@@ -28,7 +28,7 @@ repository = "https://github.com/spapanik/pickle-secure"
 
 keywords=["pickle", "AES", "secure storage"]
 classifiers=[
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3 :: Only",

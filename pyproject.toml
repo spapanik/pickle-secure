@@ -10,7 +10,7 @@ line_length = 88
 multi_line_output = 3
 include_trailing_comma = true
 known_tests = "tests"
-sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER", "TESTS"]
+sections = ["STDLIB", "THIRDPARTY", "FIRSTPARTY", "TESTS"]
 
 [tool.poetry]
 name = "pickle_secure"

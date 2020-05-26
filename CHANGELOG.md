@@ -9,18 +9,46 @@ The format is based on [Keep a Changelog][clog], and this project adheres to [Se
 - Added a changelog
 
 ## [0.9.9] - 2020-02-26
+### Changed
+- Fully implement the python 3.6 pickle API
 
 ## [0.2.0] - 2018-10-06
+### Changed
+- Change crypto backend from pycrypto to cryptography
 
 ## [0.1.3] - 2018-10-06
+### Changed
+- Changed licence to MIT
 
 ## [0.1.2] - 2018-10-06
+### Removed
+- Dropped support for python less than 3.6
 
 ## [0.1.1] - 2018-03-03
+### Removed
+- Dropped support for python 3.2
 
 ## [0.1.0] - 2018-03-03
+### Added
+- Initial release
 
 ## [0.0.1a1] - 2016-09-27
+### Added
+- Added the following constants:
+  - HIGHEST_PROTOCOL
+  - DEFAULT_PROTOCOL
+- Added the following methods:
+  - load
+  - loads
+  - dump
+  - dumps
+- Added the following exceptions:
+  - PickleError
+  - PicklingError
+  - UnpicklingError
+- Added the following classes:
+  - Pickler
+  - Unpickler
 
 
 [unreleased]: https://github.com/spapanik/pickle-secure/compare/0.9.9...master

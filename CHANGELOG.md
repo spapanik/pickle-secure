@@ -10,11 +10,11 @@ The format is based on [Keep a Changelog][clog], and this project adheres to [Se
 
 ## [0.9.9] - 2020-02-26
 ### Changed
-- Fully implement the python 3.6 pickle API
+- Fully implemented the python 3.6 pickle API
 
 ## [0.2.0] - 2018-10-06
 ### Changed
-- Change crypto backend from pycrypto to cryptography
+- Changed crypto backend from pycrypto to cryptography
 
 ## [0.1.3] - 2018-10-06
 ### Changed

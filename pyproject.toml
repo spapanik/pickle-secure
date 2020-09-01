@@ -27,7 +27,7 @@ include = ["CHANGELOG.md"]
 repository = "https://github.com/spapanik/pickle-secure"
 
 keywords=["pickle", "AES", "secure storage"]
-classifiers=[
+classifiers = [
     "Development Status :: 4 - Beta",
     "Operating System :: OS Independent",
 ]

@@ -17,7 +17,7 @@ name = "pickle_secure"
 version = "0.9.9"
 description = "Easily create encrypted pickle files"
 authors = [
-    "Stephanos Kuma <spapanik21@gmail.com>",
+    "Stephanos Kuma <stephanos@kuma.ai>",
 ]
 
 license = "LGPL-3.0+"

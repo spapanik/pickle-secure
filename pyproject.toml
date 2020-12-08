@@ -12,6 +12,9 @@ include_trailing_comma = true
 known_tests = "tests"
 sections = ["STDLIB", "THIRDPARTY", "FIRSTPARTY", "TESTS"]
 
+[tool.coverage.paths]
+source = ["src/"]
+
 [tool.poetry]
 name = "pickle_secure"
 version = "0.9.9"

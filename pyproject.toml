@@ -48,8 +48,6 @@ black = [
 isort = "^5.8.0"
 
 pytest = "^6.2.0"
-pytest-cov = "^2.11.0"
-coveralls = "^3.0.0"
 
 ipython = [
     {version = "^7.16.0", python = "~3.6.0"},

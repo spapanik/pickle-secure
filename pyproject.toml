@@ -26,7 +26,7 @@ testpaths = "tests"
 
 [tool.poetry]
 name = "pickle_secure"
-version = "0.9.9"
+version = "0.9.99"
 description = "Easily create encrypted pickle files"
 authors = [
     "Stephanos Kuma <stephanos@kuma.ai>",

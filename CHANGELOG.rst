@@ -9,6 +9,10 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+Removed
+^^^^^^^
+* Removed changelog from the published wheel
+
 `0.9.99`_ - 2022-01-05
 ---------------------
 

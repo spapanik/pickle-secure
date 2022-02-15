@@ -1,6 +1,7 @@
 import base64
 import pickle
 import secrets
+from typing import Any
 
 from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
@@ -10,8 +11,8 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 SALT_SIZE = 16
 
 
-def derive_key(password, salt):
-    password = password.encode()
+def derive_key(password: str, salt: bytes) -> bytes:
+    encoded_password = password.encode()
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
         length=32,
@@ -19,10 +20,12 @@ def derive_key(password, salt):
         iterations=100_000,
         backend=default_backend(),
     )
-    return base64.urlsafe_b64encode(kdf.derive(password))
+    return base64.urlsafe_b64encode(kdf.derive(encoded_password))
 
 
-def encrypt(raw_data, password, protocol=None, fix_imports=True):
+def encrypt(
+    raw_data: Any, password: str, protocol: int = None, fix_imports: bool = True
+) -> bytes:
     salt = secrets.token_bytes(SALT_SIZE)
     key = derive_key(password, salt)
     fernet = Fernet(key)
@@ -31,7 +34,13 @@ def encrypt(raw_data, password, protocol=None, fix_imports=True):
     return salt + encrypted_data
 
 
-def decrypt(input_data, password, fix_imports=True, encoding="ASCII", errors="strict"):
+def decrypt(
+    input_data: bytes,
+    password: str,
+    fix_imports: bool = True,
+    encoding: str = "ASCII",
+    errors: str = "strict",
+) -> Any:
     salt = input_data[:SALT_SIZE]
     encrypted_data = input_data[SALT_SIZE:]
     key = derive_key(password, salt)

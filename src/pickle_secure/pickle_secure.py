@@ -1,5 +1,5 @@
 import pickle
-from io import BytesIO
+from io import BufferedReader, BufferedWriter
 from typing import Any
 
 from pickle_secure import utils
@@ -19,7 +19,12 @@ def dumps(
 
 
 def dump(
-    obj: Any, file: BytesIO, protocol: int = None, *, fix_imports: bool = True, key: str
+    obj: Any,
+    file: BufferedWriter,
+    protocol: int = None,
+    *,
+    fix_imports: bool = True,
+    key: str,
 ) -> None:
     file.write(dumps(obj, protocol=protocol, fix_imports=fix_imports, key=key))
 
@@ -36,7 +41,7 @@ def loads(
 
 
 def load(
-    file: BytesIO,
+    file: BufferedReader,
     key: str,
     *,
     fix_imports: bool = True,
@@ -50,7 +55,12 @@ def load(
 
 class Pickler(pickle.Pickler):
     def __init__(
-        self, file: BytesIO, protocol: int = None, *, fix_imports: bool = True, key: str
+        self,
+        file: BufferedWriter,
+        protocol: int = None,
+        *,
+        fix_imports: bool = True,
+        key: str,
     ):
         super().__init__(file, protocol, fix_imports=fix_imports)
         self.__file = file
@@ -71,7 +81,7 @@ class Pickler(pickle.Pickler):
 class Unpickler(pickle.Unpickler):
     def __init__(
         self,
-        file: BytesIO,
+        file: BufferedReader,
         *,
         fix_imports: bool = True,
         encoding: str = "ASCII",

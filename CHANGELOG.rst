@@ -12,6 +12,7 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 Added
 ^^^^^
 * Added type hints
+* Added support for cryptography 37 and 38
 
 Removed
 ^^^^^^^

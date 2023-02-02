@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import base64
 import pickle
 import secrets
@@ -24,7 +26,7 @@ def derive_key(password: str, salt: bytes) -> bytes:
 
 
 def encrypt(
-    raw_data: Any, password: str, protocol: int = None, fix_imports: bool = True
+    raw_data: Any, password: str, protocol: int | None = None, fix_imports: bool = True
 ) -> bytes:
     salt = secrets.token_bytes(SALT_SIZE)
     key = derive_key(password, salt)

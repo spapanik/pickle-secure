@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pickle
 from io import BufferedReader, BufferedWriter
 from typing import Any
@@ -13,7 +15,7 @@ UnpicklingError = pickle.UnpicklingError
 
 
 def dumps(
-    obj: Any, protocol: int = None, *, fix_imports: bool = True, key: str
+    obj: Any, protocol: int | None = None, *, fix_imports: bool = True, key: str
 ) -> bytes:
     return utils.encrypt(obj, key, protocol, fix_imports)
 
@@ -21,7 +23,7 @@ def dumps(
 def dump(
     obj: Any,
     file: BufferedWriter,
-    protocol: int = None,
+    protocol: int | None = None,
     *,
     fix_imports: bool = True,
     key: str,
@@ -57,7 +59,7 @@ class Pickler(pickle.Pickler):
     def __init__(
         self,
         file: BufferedWriter,
-        protocol: int = None,
+        protocol: int | None = None,
         *,
         fix_imports: bool = True,
         key: str,

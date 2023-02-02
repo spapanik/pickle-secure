@@ -5,9 +5,6 @@ pickle-secure: encrypted pickles
 .. image:: https://github.com/spapanik/pickle-secure/actions/workflows/build.yml/badge.svg
   :alt: Build
   :target: https://github.com/spapanik/pickle-secure/actions/workflows/build.yml
-.. image:: https://img.shields.io/lgtm/alerts/g/spapanik/pickle-secure.svg
-  :alt: Total alerts
-  :target: https://lgtm.com/projects/g/spapanik/pickle-secure/alerts/
 .. image:: https://img.shields.io/github/license/spapanik/pickle-secure
   :alt: License
   :target: https://github.com/spapanik/pickle-secure/blob/main/LICENSE.txt

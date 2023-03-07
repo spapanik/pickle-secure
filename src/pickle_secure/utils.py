@@ -26,7 +26,11 @@ def derive_key(password: str, salt: bytes) -> bytes:
 
 
 def encrypt(
-    raw_data: Any, password: str, protocol: int | None = None, fix_imports: bool = True
+    raw_data: Any,
+    password: str,
+    protocol: int | None = None,
+    *,
+    fix_imports: bool = True,
 ) -> bytes:
     salt = secrets.token_bytes(SALT_SIZE)
     key = derive_key(password, salt)
@@ -39,6 +43,7 @@ def encrypt(
 def decrypt(
     input_data: bytes,
     password: str,
+    *,
     fix_imports: bool = True,
     encoding: str = "ASCII",
     errors: str = "strict",

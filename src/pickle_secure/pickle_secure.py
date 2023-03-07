@@ -17,7 +17,7 @@ UnpicklingError = pickle.UnpicklingError
 def dumps(
     obj: Any, protocol: int | None = None, *, fix_imports: bool = True, key: str
 ) -> bytes:
-    return utils.encrypt(obj, key, protocol, fix_imports)
+    return utils.encrypt(obj, key, protocol, fix_imports=fix_imports)
 
 
 def dump(
@@ -39,7 +39,9 @@ def loads(
     errors: str = "strict",
     key: str,
 ) -> Any:
-    return utils.decrypt(bytes_object, key, fix_imports, encoding, errors)
+    return utils.decrypt(
+        bytes_object, key, fix_imports=fix_imports, encoding=encoding, errors=errors
+    )
 
 
 def load(

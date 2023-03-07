@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime, timezone
 
 from cryptography.fernet import InvalidToken
 from pytest import raises
@@ -7,7 +7,7 @@ from pickle_secure import utils
 
 
 def test_encrypt_decrypt():
-    secret = [123, "£¿éά", {(2, 3, 5): datetime.datetime.now()}]
+    secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
     password = "strong password"
     encrypted_data = utils.encrypt(secret, password)
     assert secret == utils.decrypt(encrypted_data, password)

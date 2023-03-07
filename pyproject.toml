@@ -98,7 +98,7 @@ classifiers = [
 python = "^3.8"
 
 # dependencies
-cryptography = ">=36.0,<39.0"
+cryptography = ">=39.0.1"
 
 [tool.poetry.group.dev.dependencies]
 ipdb = {version = "^0.13", python = "^3.9"}

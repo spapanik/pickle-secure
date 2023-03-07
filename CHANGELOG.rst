@@ -12,11 +12,11 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 Added
 ^^^^^
 * Added type hints
-* Added support for cryptography 37 and 38
 
 Removed
 ^^^^^^^
-* Drop python 3.7 support
+* Dropped python 3.7 support
+* Dropped support for cryptography <= 39.0.0
 
 Removed
 ^^^^^^^

@@ -16,6 +16,10 @@ Added
 
 Removed
 ^^^^^^^
+* Drop python 3.7 support
+
+Removed
+^^^^^^^
 * Removed changelog from the published wheel
 
 `0.9.99`_ - 2022-01-05

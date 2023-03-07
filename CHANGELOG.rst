@@ -9,6 +9,9 @@ The format is based on `Keep a Changelog`_, and this project adheres to `Semanti
 `Unreleased`_
 -------------
 
+`0.99.9`_ - 2023-03-07
+----------------------
+
 Added
 ^^^^^
 * Added type hints
@@ -23,7 +26,7 @@ Removed
 * Removed changelog from the published wheel
 
 `0.9.99`_ - 2022-01-05
----------------------
+----------------------
 
 Added
 ^^^^^
@@ -102,7 +105,8 @@ Added
   * Unpickler
 
 
-.. _`unreleased`: https://github.com/spapanik/pickle-secure/compare/0.9.99...master
+.. _`unreleased`: https://github.com/spapanik/pickle-secure/compare/0.99.9...master
+.. _`0.99.9`: https://github.com/spapanik/pickle-secure/compare/0.9.99...v0.99.9
 .. _`0.9.99`: https://github.com/spapanik/pickle-secure/compare/0.9.9...v0.9.99
 .. _`0.9.9`: https://github.com/spapanik/pickle-secure/compare/0.2.0...v0.9.9
 .. _`0.2.0`: https://github.com/spapanik/pickle-secure/compare/0.1.3...v0.2.0

@@ -13,7 +13,7 @@ from pickle_secure.pickle_secure import (
     loads,
 )
 
-__version__ = "0.9.99"
+__version__ = "0.99.9"
 __all__ = [
     "API_VERSION",
     "HIGHEST_PROTOCOL",

@@ -76,7 +76,7 @@ data_file = ".cov_cache/coverage.dat"
 
 [tool.poetry]
 name = "pickle_secure"
-version = "0.9.99"
+version = "0.99.9"
 description = "Easily create encrypted pickle files"
 authors = [
     "Stephanos Kuma <stephanos@kuma.ai>",

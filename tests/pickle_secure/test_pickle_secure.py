@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
+import pytest
 from cryptography.fernet import InvalidToken
-from pytest import raises
 
 from pickle_secure import pickle_secure
 
@@ -29,7 +29,9 @@ def test_dumps_loads_wrong_password():
     password = "strong password"
     wrong_password = "weak password"
     encrypted_data = pickle_secure.dumps(secret, key=password)
-    assert raises(InvalidToken, pickle_secure.loads, encrypted_data, key=wrong_password)
+    assert pytest.raises(
+        InvalidToken, pickle_secure.loads, encrypted_data, key=wrong_password
+    )
 
 
 def test_pickler_unpickler_classes(tmpdir):

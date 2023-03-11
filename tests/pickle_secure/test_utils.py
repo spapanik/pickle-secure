@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
+import pytest
 from cryptography.fernet import InvalidToken
-from pytest import raises
 
 from pickle_secure import utils
 
@@ -15,7 +15,7 @@ def test_encrypt_decrypt():
 
 def test_empty_data():
     password = "strong password"
-    assert raises(InvalidToken, utils.decrypt, b"", password)
+    assert pytest.raises(InvalidToken, utils.decrypt, b"", password)
 
 
 def test_wrong_password():
@@ -23,7 +23,7 @@ def test_wrong_password():
     password = "strong password"
     wrong_key = "weak password"
     encrypted_data = utils.encrypt(secret, password)
-    assert raises(InvalidToken, utils.decrypt, encrypted_data, wrong_key)
+    assert pytest.raises(InvalidToken, utils.decrypt, encrypted_data, wrong_key)
 
 
 def test_too_short_for_decrypting():
@@ -31,4 +31,6 @@ def test_too_short_for_decrypting():
     password = "strong password"
     encrypted_data = utils.encrypt(secret, password)
     short_size = utils.SALT_SIZE - 1
-    assert raises(InvalidToken, utils.decrypt, encrypted_data[:short_size], password)
+    assert pytest.raises(
+        InvalidToken, utils.decrypt, encrypted_data[:short_size], password
+    )

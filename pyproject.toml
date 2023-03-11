@@ -40,10 +40,12 @@ select = [
     "PLC",
     "PLE",
     "PLW",
+    "PT",
     "PTH",
     "RET",
     "RSE",
     "RUF",
+    "S",
     "SIM",
     "SLF",
     "T10",
@@ -58,6 +60,12 @@ ignore = [
 ]
 src = ["src"]
 target-version = "py38"
+
+[tool.ruff.per-file-ignores]
+"tests/**" = [
+    "S101",
+    "S105",
+]
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"
@@ -85,7 +93,9 @@ authors = [
 license = "LGPL-3.0+"
 readme = "README.rst"
 
+homepage = "https://pickle-secure.readthedocs.io/en/stable/"
 repository = "https://github.com/spapanik/pickle-secure"
+documentation = "https://pickle-secure.readthedocs.io/en/stable/"
 
 keywords=["pickle", "AES", "secure storage"]
 classifiers = [

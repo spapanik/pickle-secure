@@ -30,9 +30,8 @@ def test_dumps_loads_wrong_password() -> None:
     password = "strong password"
     wrong_password = "weak password"
     encrypted_data = pickle_secure.dumps(secret, key=password)
-    assert pytest.raises(
-        InvalidToken, pickle_secure.loads, encrypted_data, key=wrong_password
-    )
+    with pytest.raises(InvalidToken):
+        pickle_secure.loads(encrypted_data, key=wrong_password)
 
 
 def test_pickler_unpickler_classes(tmpdir: py.path.local) -> None:

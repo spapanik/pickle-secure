@@ -63,6 +63,7 @@ select = [
 ]
 ignore = [
     "E501",
+    "S301",
     "TRY003",
 ]
 src = ["src"]

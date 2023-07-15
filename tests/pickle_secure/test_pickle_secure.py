@@ -1,12 +1,13 @@
 from datetime import datetime, timezone
 
+import py.path
 import pytest
 from cryptography.fernet import InvalidToken
 
 from pickle_secure import pickle_secure
 
 
-def test_dump_load(tmpdir):
+def test_dump_load(tmpdir: py.path.local) -> None:
     file = tmpdir.join("secret.pickle")
     secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
     password = "strong password"
@@ -17,14 +18,14 @@ def test_dump_load(tmpdir):
     assert secret == decrypted_data
 
 
-def test_dumps_loads():
+def test_dumps_loads() -> None:
     secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
     password = "strong password"
     encrypted_data = pickle_secure.dumps(secret, key=password)
     assert secret == pickle_secure.loads(encrypted_data, key=password)
 
 
-def test_dumps_loads_wrong_password():
+def test_dumps_loads_wrong_password() -> None:
     secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
     password = "strong password"
     wrong_password = "weak password"
@@ -34,7 +35,7 @@ def test_dumps_loads_wrong_password():
     )
 
 
-def test_pickler_unpickler_classes(tmpdir):
+def test_pickler_unpickler_classes(tmpdir: py.path.local) -> None:
     file = tmpdir.join("secret.pickle")
     password = "strong password"
     secret = {123, "£¿éά", None}

@@ -73,6 +73,7 @@ target-version = "py38"
     "FBT001",
     "PT011",
     "S101",
+    "S105",
 ]
 
 [tool.ruff.flake8-tidy-imports]

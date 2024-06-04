@@ -1,14 +1,14 @@
 from datetime import datetime, timezone
+from pathlib import Path
 
-import py.path
 import pytest
 from cryptography.fernet import InvalidToken
 
 from pickle_secure import pickle_secure
 
 
-def test_dump_load(tmpdir: py.path.local) -> None:
-    file = tmpdir.join("secret.pickle")
+def test_dump_load(tmp_path: Path) -> None:
+    file = tmp_path.joinpath("secret.pickle")
     secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
     password = "strong password"
     with file.open("wb") as f:
@@ -34,8 +34,8 @@ def test_dumps_loads_wrong_password() -> None:
         pickle_secure.loads(encrypted_data, key=wrong_password)
 
 
-def test_pickler_unpickler_classes(tmpdir: py.path.local) -> None:
-    file = tmpdir.join("secret.pickle")
+def test_pickler_unpickler_classes(tmp_path: Path) -> None:
+    file = tmp_path.joinpath("secret.pickle")
     password = "strong password"
     secret = {123, "£¿éά", None}
     with file.open("wb") as f:

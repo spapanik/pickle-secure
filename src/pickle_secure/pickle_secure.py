@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import pickle
-from io import BufferedReader, BufferedWriter
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from pickle_secure import utils
+
+if TYPE_CHECKING:
+    from io import BufferedReader, BufferedWriter
 
 API_VERSION = "3.6"
 HIGHEST_PROTOCOL = pickle.HIGHEST_PROTOCOL
@@ -65,7 +67,7 @@ class Pickler(pickle.Pickler):
         *,
         fix_imports: bool = True,
         key: str,
-    ):
+    ) -> None:
         super().__init__(file, protocol, fix_imports=fix_imports)
         self.__file = file
         self.__protocol = protocol
@@ -91,7 +93,7 @@ class Unpickler(pickle.Unpickler):
         encoding: str = "ASCII",
         errors: str = "strict",
         key: str,
-    ):
+    ) -> None:
         super().__init__(
             file, fix_imports=fix_imports, encoding=encoding, errors=errors
         )

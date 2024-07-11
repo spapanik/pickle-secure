@@ -6,7 +6,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 target-version = [
-    "py38",
+    "py39",
 ]
 
 [tool.mypy]
@@ -32,11 +32,12 @@ warn_unused_configs = true
 src = [
     "src",
 ]
-target-version = "py38"
+target-version = "py39"
 
 [tool.ruff.lint]
 select = [
     "A",
+    "ANN",
     "ARG",
     "ASYNC",
     "B",
@@ -51,7 +52,9 @@ select = [
     "F",
     "FA",
     "FBT",
+    "FIX",
     "FLY",
+    "FURB",
     "G",
     "I",
     "ICN",
@@ -76,6 +79,8 @@ select = [
     "SLF",
     "SLOT",
     "T10",
+    "TCH",
+    "TD",
     "TID",
     "TRY",
     "UP",
@@ -83,9 +88,15 @@ select = [
     "YTT",
 ]
 ignore = [
+    "ANN101",
+    "ANN102",
+    "ANN401",
     "COM812",
     "E501",
+    "FIX002",
     "S301",
+    "TD002",
+    "TD003",
     "TRY003",
 ]
 

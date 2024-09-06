@@ -11,7 +11,7 @@ version = "0.99.9"
 authors = [
     { name = "Stephanos Kuma", email = "stephanos@kuma.ai" },
 ]
-license = { text = "LGPLv3+" }
+license = { text = "BSD-3-Clause" }
 
 readme = "docs/README.md"
 description = "Easily create encrypted pickle files"

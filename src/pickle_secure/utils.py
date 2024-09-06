@@ -53,6 +53,6 @@ def decrypt(
     key = derive_key(password, salt)
     fernet = Fernet(key)
     pickled_data = fernet.decrypt(encrypted_data)
-    return pickle.loads(
+    return pickle.loads(  # noqa: S301
         pickled_data, fix_imports=fix_imports, encoding=encoding, errors=errors
     )

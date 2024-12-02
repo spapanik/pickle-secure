@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pickle
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 from pickle_secure import utils
 
@@ -17,13 +17,13 @@ UnpicklingError = pickle.UnpicklingError
 
 
 def dumps(
-    obj: Any, protocol: int | None = None, *, fix_imports: bool = True, key: str
+    obj: object, protocol: int | None = None, *, fix_imports: bool = True, key: str
 ) -> bytes:
     return utils.encrypt(obj, key, protocol, fix_imports=fix_imports)
 
 
 def dump(
-    obj: Any,
+    obj: object,
     file: BufferedWriter,
     protocol: int | None = None,
     *,
@@ -40,7 +40,7 @@ def loads(
     encoding: str = "ASCII",
     errors: str = "strict",
     key: str,
-) -> Any:
+) -> object:
     return utils.decrypt(
         bytes_object, key, fix_imports=fix_imports, encoding=encoding, errors=errors
     )
@@ -53,7 +53,7 @@ def load(
     fix_imports: bool = True,
     encoding: str = "ASCII",
     errors: str = "strict",
-) -> Any:
+) -> object:
     return loads(
         file.read(), fix_imports=fix_imports, encoding=encoding, errors=errors, key=key
     )
@@ -74,7 +74,7 @@ class Pickler(pickle.Pickler):
         self.__fix_imports = fix_imports
         self.__key = key
 
-    def dump(self, obj: Any) -> None:
+    def dump(self, obj: object) -> None:
         return dump(
             obj,
             self.__file,
@@ -103,7 +103,7 @@ class Unpickler(pickle.Unpickler):
         self.__errors = errors
         self.__key = key
 
-    def load(self) -> Any:
+    def load(self) -> object:
         return load(
             self.__file,
             fix_imports=self.__fix_imports,

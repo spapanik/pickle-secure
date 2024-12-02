@@ -3,7 +3,6 @@ from __future__ import annotations
 import base64
 import pickle
 import secrets
-from typing import Any
 
 from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
@@ -26,7 +25,7 @@ def derive_key(password: str, salt: bytes) -> bytes:
 
 
 def encrypt(
-    raw_data: Any,
+    raw_data: object,
     password: str,
     protocol: int | None = None,
     *,
@@ -36,7 +35,7 @@ def encrypt(
     key = derive_key(password, salt)
     fernet = Fernet(key)
     pickled_data = pickle.dumps(raw_data, protocol=protocol, fix_imports=fix_imports)
-    encrypted_data = fernet.encrypt(pickled_data)
+    encrypted_data: bytes = fernet.encrypt(pickled_data)
     return salt + encrypted_data
 
 
@@ -47,7 +46,7 @@ def decrypt(
     fix_imports: bool = True,
     encoding: str = "ASCII",
     errors: str = "strict",
-) -> Any:
+) -> object:
     salt = input_data[:SALT_SIZE]
     encrypted_data = input_data[SALT_SIZE:]
     key = derive_key(password, salt)

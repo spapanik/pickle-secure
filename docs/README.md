@@ -25,7 +25,7 @@ pickles. `pickle-secure` offers a similar API as the built-in pickle.
 [test_badge]: https://github.com/spapanik/pickle-secure/actions/workflows/tests.yml/badge.svg
 [test_url]: https://github.com/spapanik/pickle-secure/actions/workflows/tests.yml
 [licence_badge]: https://img.shields.io/pypi/l/pickle-secure
-[licence_url]: https://github.com/spapanik/pickle-secure/blob/main/docs/LICENSE.md
+[licence_url]: https://pickle-secure.readthedocs.io/en/stable/LICENSE/
 [pypi_badge]: https://img.shields.io/pypi/v/pickle-secure
 [pypi_url]: https://pypi.org/project/pickle-secure
 [pepy_badge]: https://pepy.tech/badge/pickle-secure
@@ -37,4 +37,4 @@ pickles. `pickle-secure` offers a similar API as the built-in pickle.
 [ruff_badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json
 [ruff_url]: https://github.com/charliermarsh/ruff
 [Documentation]: https://pickle-secure.readthedocs.io/en/stable/
-[Changelog]: https://github.com/spapanik/pickle-secure/blob/main/docs/CHANGELOG.md
+[Changelog]: https://pickle-secure.readthedocs.io/en/stable/CHANGELOG/

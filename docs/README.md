@@ -17,8 +17,8 @@ pickles. `pickle-secure` offers a similar API as the built-in pickle.
 
 ## Links
 
--   [Documentation]
--   [Changelog]
+- [Documentation]
+- [Changelog]
 
 [build_badge]: https://github.com/spapanik/pickle-secure/actions/workflows/build.yml/badge.svg
 [build_url]: https://github.com/spapanik/pickle-secure/actions/workflows/build.yml

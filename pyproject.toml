@@ -42,17 +42,19 @@ documentation = "https://pickle-secure.readthedocs.io/en/stable/"
 dev = [
     "ipdb~=0.13",
     "ipython~=8.37",
+    "ptpython~=3.0",
     { include-group = "lint" },
     { include-group = "test" },
     { include-group = "docs" },
 ]
 lint = [
-    "mypy~=1.16",
-    "ruff~=0.12",
+    "mypy~=1.18",  # Keep mypy for CI/CD
+    "ty~=0.0.1a21",
+    "ruff~=0.13",
     { include-group = "test_core" },
 ]
 test = [
-    "pytest-cov~=6.2",
+    "pytest-cov~=7.0",
     { include-group = "test_core" },
 ]
 test_core = [
@@ -67,6 +69,7 @@ docs = [
 ]
 
 [tool.mypy]
+# Keep mypy for CI/CD
 check_untyped_defs = true
 disallow_any_decorated = true
 disallow_any_explicit = true
@@ -91,6 +94,7 @@ warn_unused_ignores = true
 warn_unreachable = true
 
 [[tool.mypy.overrides]]
+# Keep mypy for CI/CD
 module = "tests.*"
 disallow_any_decorated = false # mock.MagicMock is Any
 
@@ -98,7 +102,7 @@ disallow_any_decorated = false # mock.MagicMock is Any
 src = [
     "src",
 ]
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = [

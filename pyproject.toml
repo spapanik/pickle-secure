@@ -1,8 +1,8 @@
 [build-system]
 requires = [
-    "phosphorus>=0.10",
+    "uv_build>=0.9.21,<0.10.0",
 ]
-build-backend = "phosphorus.construction.api"
+build-backend = "uv_build"
 
 [project]
 name = "pickle_secure"
@@ -30,7 +30,7 @@ classifiers = [
 
 requires-python = ">=3.10"
 dependencies = [
-    "cryptography>=43",
+    "cryptography>=44",
 ]
 
 [project.urls]
@@ -48,9 +48,9 @@ dev = [
     { include-group = "docs" },
 ]
 lint = [
-    "mypy~=1.18",  # Keep mypy for CI/CD
-    "ty~=0.0.1a21",
-    "ruff~=0.13",
+    "mypy~=1.19",  # Keep mypy for CI/CD
+    "ruff~=0.14",
+    "ty~=0.0.9",
     { include-group = "test_core" },
 ]
 test = [
@@ -58,7 +58,7 @@ test = [
     { include-group = "test_core" },
 ]
 test_core = [
-    "pytest~=8.4",
+    "pytest~=9.0",
 ]
 docs = [
     "mkdocs~=1.6",
@@ -139,9 +139,13 @@ forced-separate = [
 ]
 split-on-trailing-comma = false
 
-[tool.pytest.ini_options]
-addopts = "-ra -v"
-testpaths = "tests"
+[tool.pytest]
+minversion = "9.0"
+strict = true
+addopts = ["-ra", "-v"]
+testpaths = [
+    "tests",
+]
 
 [tool.coverage.run]
 branch = true
@@ -150,7 +154,7 @@ source = [
 ]
 data_file = ".cov_cache/coverage.dat"
 omit = [
-    "src/pickle-secure/lib/type_defs.py",
+    "src/**/type_defs.py",
 ]
 
 [tool.coverage.report]

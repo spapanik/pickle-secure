@@ -77,20 +77,20 @@ The format is based on [Keep a Changelog], and this project adheres to [Semantic
 ### Added
 
 - Added the following constants:
-    - HIGHEST_PROTOCOL
-    - DEFAULT_PROTOCOL
+  - HIGHEST_PROTOCOL
+  - DEFAULT_PROTOCOL
 - Added the following methods:
-    - load
-    - loads
-    - dump
-    - dumps
+  - load
+  - loads
+  - dump
+  - dumps
 - Added the following exceptions:
-    - PickleError
-    - PicklingError
-    - UnpicklingError
+  - PickleError
+  - PicklingError
+  - UnpicklingError
 - Added the following classes:
-    - Pickler
-    - Unpickler
+  - Pickler
+  - Unpickler
 
 [Keep a Changelog]: https://keepachangelog.com/en/1.1.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html

@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -9,7 +9,7 @@ from pickle_secure import pickle_secure
 
 def test_dump_load(tmp_path: Path) -> None:
     file = tmp_path.joinpath("secret.pickle")
-    secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
+    secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=UTC)}]
     password = "strong password"
     with file.open("wb") as f:
         pickle_secure.dump(secret, f, key=password)
@@ -19,14 +19,14 @@ def test_dump_load(tmp_path: Path) -> None:
 
 
 def test_dumps_loads() -> None:
-    secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
+    secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=UTC)}]
     password = "strong password"
     encrypted_data = pickle_secure.dumps(secret, key=password)
     assert secret == pickle_secure.loads(encrypted_data, key=password)
 
 
 def test_dumps_loads_wrong_password() -> None:
-    secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=timezone.utc)}]
+    secret = [123, "£¿éά", {(2, 3, 5): datetime.now(tz=UTC)}]
     password = "strong password"
     wrong_password = "weak password"
     encrypted_data = pickle_secure.dumps(secret, key=password)
